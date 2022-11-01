@@ -32,8 +32,8 @@ export class Merchant {
   name : string
   address : Address;
   contact : Contact;
-  visibility : boolean = true;
-  verified : boolean = true;
+  visibility : boolean = false;
+  verified : boolean = false;
   serviceHrs : string = '8:00AM - 9:00PM';
   riderStatus :string;
   feePerKilometer : number = 10

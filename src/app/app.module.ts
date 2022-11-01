@@ -30,6 +30,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MapComponent } from './components/map/map.component';
 import { StartSellingComponent } from './pages/merchant/start-selling/start-selling.component';
 import { SettingsComponent } from './pages/merchant/settings/settings.component';
+import { BasicDialogComponent } from './components/basic-dialog/basic-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { SettingsComponent } from './pages/merchant/settings/settings.component'
     SpinnerComponent,
     MapComponent,
     StartSellingComponent,
-    SettingsComponent
+    SettingsComponent,
+    BasicDialogComponent
   ],
   imports: [
     BrowserModule,

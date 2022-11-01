@@ -69,10 +69,10 @@ export class StartSellingComponent implements OnInit {
     this.createMerchant.name = this.form.controls['name'].value
     this.createMerchant.address = this.address;
     this.createMerchant.contact = this.contact
-    this.createMerchant.visibility = true
+    this.createMerchant.visibility = false
     this.createMerchant.riderStatus = 'active';
     this.createMerchant.feePerKilometer = 10
-    this.createMerchant.verified = true
+    this.createMerchant.verified = false
     this.createMerchant.serviceHrs = "8:00AM - 9:00PM"
 
     console.log(this.createMerchant)

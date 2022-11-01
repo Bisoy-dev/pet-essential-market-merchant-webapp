@@ -13,6 +13,8 @@ import { MatCommonModule } from '@angular/material/core'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatMenuModule } from '@angular/material/menu'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatTabsModule } from '@angular/material/tabs'
 
 const material = [
   MatButtonModule,
@@ -28,7 +30,9 @@ const material = [
   MatCommonModule,
   MatGridListModule,
   MatSnackBarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatDialogModule,
+  MatTabsModule
 ]
 @NgModule({
   declarations: [],

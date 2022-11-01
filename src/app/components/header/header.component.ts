@@ -10,7 +10,7 @@ import { UiService } from 'src/app/helper/ui.service';
 })
 export class HeaderComponent implements OnInit {
 
-  show : boolean = false;
+  show : boolean = true;
   showBurger : boolean = false
   profileSectionShow : boolean = false;
 

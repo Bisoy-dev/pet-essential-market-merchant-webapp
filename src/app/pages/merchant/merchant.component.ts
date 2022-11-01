@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { BasicDialogComponent } from 'src/app/components/basic-dialog/basic-dialog.component';
 import { user_local_storage_key } from 'src/app/constants/keys';
 import { UiService } from 'src/app/helper/ui.service';
 import { Merchant } from 'src/app/models/merchan.model';
@@ -16,7 +18,8 @@ export class MerchantComponent implements OnInit {
   merchant : Merchant
   isErr : boolean = false
   isLoading : boolean
-  constructor(private _uiService : UiService, private _profileService : ProfileService) {
+  constructor(private _uiService : UiService, private _profileService : ProfileService,
+      private _dialog : MatDialog) {
     this.user = JSON.parse(localStorage.getItem(user_local_storage_key)!) as UserLogged
   }
 
@@ -24,8 +27,10 @@ export class MerchantComponent implements OnInit {
     this._uiService.burgerListener()
       .subscribe(val => {
         this.open = val
+        console.log('burger ' + val)
       })
       this.loadMerchant();
+
   }
 
   loadMerchant() : void {
@@ -35,6 +40,11 @@ export class MerchantComponent implements OnInit {
         this.merchant = data
         this.isLoading = false
         console.log(this.merchant)
+        if(!this.merchant.verified){
+
+          this._dialog.open(BasicDialogComponent)
+          this._uiService.ticketTrigger(this.merchant)
+        }
       }, err => {
         this.isErr = true
         this.isLoading = false

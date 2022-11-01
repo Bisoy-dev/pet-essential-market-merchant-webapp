@@ -11,7 +11,9 @@
             </div>
             <div class="items-container">
               <ul class="items">
+                <!-- <mat-icon>create</mat-icon> -->
                 <!-- <li><button mat-menu-item color="warn" [routerLink]="['dashboard']"><mat-icon>assignment</mat-icon> Dashboard</button></li> -->
+                  <li *ngIf="merchant && !merchant.verified"><button mat-menu-item color="warn" [routerLink]="['dashboard']"><mat-icon color="warn">create</mat-icon> Submit a ticket</button></li>
                   <li><button mat-menu-item color="warn" [routerLink]="['customer-orders']"><mat-icon>assignment</mat-icon> Customer Orders</button></li>
                   <li><button mat-menu-item color="warn" [routerLink]="['add-product']"><mat-icon>add_circle_outline</mat-icon> Add Item</button></li>
                   <li><button mat-menu-item color="warn" [routerLink]="['posted-items']"><mat-icon>storage</mat-icon> My Posted Items</button></li>

@@ -1,0 +1,20 @@
+
+<div class="container" *ngIf="!submit">
+  <h1 mat-dialog-title>Verification Warning</h1>
+<div mat-dialog-content>This merchant is not verified yet, please submit a ticket.</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">OK</button>
+</div>
+</div>
+<div class="container row" *ngIf="submit">
+  <h1 mat-dialog-title>Submission form</h1>
+  <mat-form-field color="warn">
+    <mat-label>Attachment <mat-icon>attachment</mat-icon></mat-label>
+    <input matInput type="text" readonly="true" (click)="file.click()" [value]="fileName">
+    <mat-hint>Click the input to chose file</mat-hint>
+  </mat-form-field>
+  <input type="file" style="display: none;" #file (change)="onSelectFile($event)">
+  <button mat-raised-button color="warn" (click)="submitTicket()" *ngIf="!submitting && !done">Submit</button>
+  <app-spinner [spinnerOnly]="true" [diameter]="30" *ngIf="submitting"></app-spinner>
+  <button mat-raised-button mat-dialog-close color="warn" *ngIf="done">Done</button>
+</div>

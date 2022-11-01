@@ -1,1 +1,70 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+
+
+
+<div class="container">
+  <mat-tab-group>
+    <mat-tab label="Monetization">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>TRANSACTION #</th>
+            <th>DATE</th>
+            <th>AMOUNT</th>
+            <th>PERCENT</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="data.length > 0">
+          <tr *ngFor="let d of data">
+            <td>{{ d?.transactionId }}</td>
+            <td>{{ d?.createdAt | date : 'mediumDate' }}</td>
+            <td>{{ d?.amount | currency:'PHP' }}</td>
+            <td>0.05%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="spinner" *ngIf="!data.length">
+        <app-spinner [message]="message" [spinnerShow]="spinner" (onClick)="refresh()"></app-spinner>
+      </div>
+    </mat-tab>
+    <mat-tab label="Submits">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ATTACH FILE</th>
+            <th>ACCOUNT ID</th>
+            <th>STATUS</th>
+            <th>DATE</th>
+            <th>ROLE</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <h1 *ngIf="tickets.length == 0">No dat found</h1>
+        <tbody *ngIf="tickets.length > 0">
+          <tr *ngFor="let ticket of tickets">
+            <td>
+              <img [src]="ticket?.img" alt="" height="200px" width="250px">
+            </td>
+            <td>
+              {{ ticket?.accountId }}
+            </td>
+            <td>
+              {{ ticket?.status | uppercase }}
+            </td>
+            <td>
+              {{ ticket?.date?.createdAt | date : 'mediumDate' }}
+            </td>
+            <td>
+              {{ ticket?.role | uppercase }}
+            </td>
+            <td>
+              <button mat-stroked-button color="warn" (click)="update(ticket)"><mat-icon color="warn">swap_vertical_circle</mat-icon> Verify</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
