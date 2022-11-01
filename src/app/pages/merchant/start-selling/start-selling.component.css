@@ -1,0 +1,32 @@
+.container{
+  padding: 2vh;
+}
+.col{
+  display: flex;
+  flex-direction: column;
+}
+.row{
+  padding: 2vh;
+  /* width: 700px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.map{
+  margin-left: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid gray;
+  padding: 1.5rem;
+}
+.map-error{
+  margin-left: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid red;
+  padding: 1.5rem;
+}
+.controls{
+  width: 200px;
+}
+mat-card-subtitle{
+  margin-bottom: 1vh;
+}

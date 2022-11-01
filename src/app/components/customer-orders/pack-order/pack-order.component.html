@@ -1,0 +1,64 @@
+<mat-card>
+  <mat-card-header class="col customer-details">
+    <h5 class="title">{{ data.checkout?.header?.customer?.name?.first }} {{ checkout?.header?.customer?.name?.last }}</h5>
+    <span><mat-icon> place</mat-icon> Located at {{ data.checkout?.header?.customer?.address?.name }}</span>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content style="margin-top: 8vh;" *ngIf="!seeMore">
+    <div class="content">
+      <img [src]="data.checkout?.content?.items[0]?.images[0]" alt="" width="430px" height="300px">
+      <div class="details">
+        <span class="title">{{ data.checkout?.content?.items[0]?.title }}</span>
+        <div class="sub-details">
+          <small class="small">Price : {{ data.checkout?.content?.items[0]?.price | currency : 'PHP' }}</small>
+          <small class="small">Quantity : {{ 'x' + data.checkout?.content?.items[0]?.quantity }}</small>
+          <small class="total">Total {{ data.checkout?.content?.items[0]?.subTotal | currency : 'PHP' }}</small>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-header class="see-more" *ngIf="data?.checkout?.content?.items?.length > 1">
+    <button mat-raised-button color="accent" (click)="seeToggle()"><mat-icon>{{ seeMore ? 'expand_less' : 'expand_more' }}</mat-icon>{{ text }}</button>
+  </mat-card-header>
+  <mat-card-content style="margin-top: 8vh;" *ngIf="seeMore">
+    <div class="content" *ngFor="let item of data?.checkout?.content?.items">
+      <img [src]="item?.images[0]" alt="" width="430px" height="300px">
+      <div class="details">
+        <span class="title">{{ item?.title }}</span>
+        <div class="sub-details">
+          <small class="small">Price : {{ item?.price | currency : 'PHP' }}</small>
+          <small class="small">Quantity : {{ 'x' + item?.quantity }}</small>
+          <small class="total">Total {{ item?.subTotal | currency : 'PHP' }}</small>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+  <mat-divider *ngIf="data?.checkout?.content?.items.length == 1"></mat-divider>
+  <mat-card-content style="margin-top: 3vh;" class="content">
+    <mat-card-content class="col">
+      <mat-card-header class="col">
+        <mat-card-subtitle>
+          AMOUNT TO PAY
+        </mat-card-subtitle>
+        <mat-card-title class="total">
+          {{ (total() + data.checkout?.deliveryFee) | currency : 'PHP' }}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-header class="col">
+        <button mat-raised-button color="accent" *ngIf="!data.submit" (click)="onDeliver()">Ready to Deliver</button>
+        <app-spinner [diameter]="30" [spinnerOnly]="true" *ngIf="data.submit"></app-spinner>
+      </mat-card-header>
+
+    </mat-card-content>
+    <!-- <mat-card-content class="col">
+      <mat-card-subtitle>
+        DELIVERED ON
+      </mat-card-subtitle>
+      <mat-card-title>
+        Tue, Sep 20, 2022 11:42 AM
+      </mat-card-title>
+    </mat-card-content> -->
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,5 @@
+<div class="spinner">
+  <mat-progress-spinner *ngIf="spinnerShow" mode="indeterminate" [diameter]="diameter" color="warn"></mat-progress-spinner>
+  <mat-card-subtitle *ngIf="!spinnerOnly">{{ message }}</mat-card-subtitle>
+  <button mat-raised-button color="warn" *ngIf="!spinnerShow && !spinnerOnly" (click)="onClick.emit()">{{ text }}</button>
+</div>

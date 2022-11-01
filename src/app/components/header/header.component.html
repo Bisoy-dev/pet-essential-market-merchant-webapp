@@ -1,0 +1,17 @@
+<mat-toolbar class="toolbar">
+  <!-- <mat-icon>{{ open ? 'remove' : 'sort' }}</mat-icon> -->
+  <button *ngIf="showBurger" mat-icon-button (click)="onToggle()" class="humberger"><mat-icon>{{ show ? 'close' : 'menu' }}</mat-icon></button>
+  <a href="#">Pet Shop e-Commerce</a>
+  <span class="spacer"></span>
+  <button mat-mini-fab color="accent" [matMenuTriggerFor]="menu" *ngIf="profileSectionShow"><mat-icon>person</mat-icon></button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/merchant', 'settings']">
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>settings_power</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

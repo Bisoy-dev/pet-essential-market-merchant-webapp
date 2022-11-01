@@ -1,0 +1,10 @@
+<google-map
+  [height]="height"
+  [width]="width"
+  [center]="center"
+  (mapClick)="addMark($event)">
+  <map-marker
+    [position]="positions[index]"
+    [options]="markerOptions">
+  </map-marker>
+</google-map>

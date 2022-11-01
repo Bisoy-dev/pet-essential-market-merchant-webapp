@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header class="col customer-details">
+    <h5 class="title">{{ checkout?.header?.customer?.name?.first + ' ' + checkout?.header?.customer?.name?.last }}</h5>
+    <span><mat-icon>place</mat-icon> Located at {{ checkout?.header?.customer?.address?.name }}</span>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content style="margin-top: 8vh;">
+    <div class="content">
+      <img [src]="checkout?.content?.items[0]?.images[0]" width="430px" height="300px" alt="">
+      <div class="details">
+        <span class="title">{{ checkout?.content?.items[0]?.title }}</span>
+        <div class="sub-details">
+          <small class="small">Price : {{ checkout?.content?.items[0]?.price | currency : 'PHP' }}</small>
+          <small class="small">Quantity : x{{ checkout?.content?.items[0]?.quantity }}</small>
+          <small class="total">Total {{ checkout?.content?.items[0]?.subTotal | currency : 'PHP' }}</small>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-content style="margin-top: 3vh;" class="content">
+    <mat-card-header class="col">
+      <mat-card-subtitle>
+        AMOUNT TO PAY
+      </mat-card-subtitle>
+      <mat-card-title class="total">
+        {{ total() + checkout?.deliveryFee | currency : 'PHP' }}
+      </mat-card-title>
+    </mat-card-header>
+    <!-- <mat-card-content class="col">
+      <mat-card-subtitle>
+        DELIVERED ON
+      </mat-card-subtitle>
+      <mat-card-title>
+        Tue, Sep 20, 2022 11:42 AM
+      </mat-card-title>
+    </mat-card-content> -->
+  </mat-card-content>
+</mat-card>

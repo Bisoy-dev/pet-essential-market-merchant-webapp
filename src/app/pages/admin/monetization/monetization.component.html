@@ -1,0 +1,26 @@
+
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>TRANSACTION #</th>
+        <th>DATE</th>
+        <th>AMOUNT</th>
+        <th>PERCENT</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="data.length > 0">
+      <tr *ngFor="let d of data">
+        <td>{{ d?.transactionId }}</td>
+        <td>{{ d?.createdAt | date : 'mediumDate' }}</td>
+        <td>{{ d?.amount | currency:'PHP' }}</td>
+        <td>0.05%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="spinner" *ngIf="!data.length">
+    <app-spinner [message]="message" [spinnerShow]="spinner" (onClick)="refresh()"></app-spinner>
+  </div>
+
+</div>

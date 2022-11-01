@@ -1,0 +1,46 @@
+mat-card{
+  margin: 2vh;
+}
+.customer-details{
+  margin-bottom: 3vh;
+}
+.col{
+  display: flex;
+  flex-direction: column;
+}
+.content{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sub-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.small{
+  font-size: 18px;
+}
+.title{
+  color: rgb(226, 67, 67);
+  font-size: 25px;
+}
+.total{
+  color: rgb(226, 67, 67);
+  font-size: 25px;
+}
+.row{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+mat-card-header span{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}

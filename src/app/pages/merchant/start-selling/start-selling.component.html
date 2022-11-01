@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col controls">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input type="text" matInput formControlName="address">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+          <mat-label>Email</mat-label>
+          <input type="text" matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline" fomr>
+          <mat-label>Phone #</mat-label>
+          <input type="number" matInput formControlName="number">
+        </mat-form-field>
+        <button type="submit" mat-flat-button color="warn" *ngIf="!submit">Create</button>
+        <app-spinner [spinnerOnly]="true" [diameter]="40" *ngIf="submit"></app-spinner>
+      </div>
+      <div [class]="coordinates ? 'col map' : 'col map-error'">
+        <mat-card-subtitle>Set Merchant Coordinates</mat-card-subtitle>
+        <app-map [width]="'600px'" [height]="'260px'" (onClick)="clickCoor($event)"></app-map>
+        <mat-card-subtitle>Lat : {{ coordinates.latitude }}</mat-card-subtitle>
+        <mat-card-subtitle>Lng : {{ coordinates.longitude }}</mat-card-subtitle>
+      </div>
+    </div>
+  </form>
+</div>

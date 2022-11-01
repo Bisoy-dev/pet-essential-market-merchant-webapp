@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="header">
+    <h3>Add Product</h3>
+  </div>
+  <app-spinner [diameter]="60" *ngIf="isLoad" [spinnerShow]="!err " (onClick)="loadMerchant()"></app-spinner>
+  <mat-card *ngIf="!merchant && !isLoad" style="width: 500px;">
+    <mat-card-title >Please regsiter as merchant.</mat-card-title>
+    <button mat-stroked-button color="warn" [routerLink]="['/merchant','start-selling']"><mat-icon>keyboard_backspace</mat-icon> GET STARTED</button>
+  </mat-card>
+  <mat-expansion-panel *ngIf="!isLoad && merchant">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Add Product</mat-panel-title>
+      <mat-panel-description>
+        Give customers an idea about your product
+        <mat-icon>add_circle_outline</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="form" class="form-container" (ngSubmit)="onSubmit()">
+      <div class="form">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Product Name</mat-label>
+          <input matInput type="text" formControlName="productName"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Price</mat-label>
+          <input matInput type="number" formControlName="price"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Description</mat-label>
+          <textarea matInput id="" cols="10" rows="5" formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Images</mat-label>
+          <input matInput type="input" readonly="true" (click)="file.click()" formControlName="images"/>
+          <mat-hint>Click to choose files</mat-hint>
+          <!-- <mat-hint *ngIf="files.length">Double click the specific image to be remove</mat-hint> -->
+        </mat-form-field>
+        <input id="fileInput" type="file" #file multiple accept="image/*" (change)="onChooseFile($event)"/>
+        <div class="col">
+          <div class="row" *ngFor="let file of images">
+            <img src="{{ file }}" alt="" width="50" height="100" class="uploaded-img">
+          </div>
+        </div>
+        <!-- <mat-grid-list cols="4" rowHeight="2:1">
+          <mat-grid-tile-header>Images</mat-grid-tile-header>
+          <mat-grid-tile *ngFor="let file of images">
+            <img src="{{ file }}" alt="" width="50" height="100" class="uploaded-img">
+          </mat-grid-tile>
+        </mat-grid-list> -->
+        <!-- <input type="hidden" #file>
+        <button mat-raised-button color="primary" (click)="file.click()">File</button> -->
+        <button mat-raised-button color="accent" *ngIf="!submit">POST</button>
+        <app-spinner [diameter]="30" [spinnerOnly]="true" *ngIf="submit"></app-spinner>
+      </div>
+    </form>
+  </mat-expansion-panel>
+
+</div>

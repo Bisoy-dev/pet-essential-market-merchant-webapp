@@ -1,0 +1,83 @@
+
+<app-spinner *ngIf="!merchant"></app-spinner>
+<mat-grid-list cols="2" rowHeight="100" *ngIf="merchant">
+  <div class="header">
+    <mat-card-title><mat-icon>settings</mat-icon> Settings</mat-card-title>
+  </div>
+  <mat-expansion-panel [title]="'Update'">
+    <mat-expansion-panel-header>
+      <!-- Update Address -->
+      <mat-panel-title>Update Address</mat-panel-title>
+    </mat-expansion-panel-header>
+    <form class="col center" [formGroup]="addressForm" (ngSubmit)="onAddressUpdate()">
+        <div class="map">
+          <app-map [width]="'auto'" (onClick)="onMapClick($event)" [position]="position"></app-map>
+          <mat-hint>Update coordinates by dragging and click the chosen location.</mat-hint>
+        </div>
+        <mat-form-field appearance="outline" class="control">
+          <mat-label>Address</mat-label>
+          <input matInput type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="control" >
+          <mat-label>Latitude</mat-label>
+          <input matInput type="text" readonly="true" formControlName="latitude">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="control">
+          <mat-label>Longitude</mat-label>
+          <input matInput type="text" readonly="true" formControlName="longitude">
+        </mat-form-field>
+        <button mat-flat-button type="submit" color="warn" class="control" *ngIf="!addressSubmit">Update</button>
+        <app-spinner [spinnerOnly]="true" [diameter]="30" *ngIf="addressSubmit" class="control"></app-spinner>
+    </form>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Update Name
+    </mat-expansion-panel-header>
+    <form [formGroup]="nameForm" (ngSubmit)="onNameUpdate()">
+      <div class="col center">
+        <mat-form-field appearance="outline" class="control">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name">
+        </mat-form-field>
+        <button mat-flat-button color="warn" class="control" *ngIf="!_nameSubmit">Update</button>
+        <app-spinner [spinnerOnly]="true" [diameter]="30" class="control" *ngIf="_nameSubmit"></app-spinner>
+      </div>
+    </form>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Update Avatar
+    </mat-expansion-panel-header>
+    <form [formGroup]="avatarForm" (ngSubmit)="onUpdateAvatar()">
+      <div class="col center">
+        <img [src]="merchant.avatar" alt="" class="control" height="350px" style="margin-bottom: 2vh;">
+        <mat-form-field appearance="outline" class="control">
+          <mat-label>Chhose File</mat-label>
+          <input matInput type="text" (click)="file.click()" readonly="true" formControlName="img">
+          <mat-hint>Click the input to browse file</mat-hint>
+        </mat-form-field>
+        <input type="file" style="display: none;" #file (change)="onSelectedAvatar($event)">
+        <button mat-flat-button color="warn" class="control" *ngIf="!_avatarSubmit">Update</button>
+        <app-spinner [spinnerOnly]="true" [diameter]="30" class="control" *ngIf="_avatarSubmit"></app-spinner>
+      </div>
+    </form>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Update Contact
+    </mat-expansion-panel-header>
+    <form class="col center" [formGroup]="contactForm" (ngSubmit)="onUpdateContact()">
+      <mat-form-field appearance="outline" class="control">
+        <mat-label>Phone #</mat-label>
+        <input matInput type="text" formControlName="number">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="control" >
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email">
+      </mat-form-field>
+      <button mat-flat-button type="submit" color="warn" class="control" *ngIf="!_contactSubmit">Update</button>
+      <app-spinner [spinnerOnly]="true" [diameter]="30" *ngIf="_contactSubmit" class="control"></app-spinner>
+  </form>
+  </mat-expansion-panel>
+</mat-grid-list>

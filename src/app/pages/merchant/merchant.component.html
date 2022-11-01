@@ -1,0 +1,37 @@
+
+
+<mat-sidenav-container>
+    <mat-sidenav [opened]="open" #sideNav mode="side">
+        <div class="menu">
+            <div *ngIf="merchant" class="header-menu" [style.background]="'url(' + merchant.avatar + ')'">
+              <div class="col">
+                <span class="merchant-name">{{ merchant.name }}</span>
+                <small class="merchant-contact">{{ merchant.contact.email }}</small>
+              </div>
+            </div>
+            <div class="items-container">
+              <ul class="items">
+                <!-- <li><button mat-menu-item color="warn" [routerLink]="['dashboard']"><mat-icon>assignment</mat-icon> Dashboard</button></li> -->
+                  <li><button mat-menu-item color="warn" [routerLink]="['customer-orders']"><mat-icon>assignment</mat-icon> Customer Orders</button></li>
+                  <li><button mat-menu-item color="warn" [routerLink]="['add-product']"><mat-icon>add_circle_outline</mat-icon> Add Item</button></li>
+                  <li><button mat-menu-item color="warn" [routerLink]="['posted-items']"><mat-icon>storage</mat-icon> My Posted Items</button></li>
+              </ul>
+              <ul class="footer-item">
+                <li *ngIf="!merchant"><button mat-menu-item color="warn" [routerLink]="['start-selling']"><mat-icon>keyboard_backspace</mat-icon> Start Selling</button></li>
+                <li *ngIf="merchant"><button mat-menu-item color="warn" [routerLink]="['settings']"><mat-icon>settings</mat-icon> Settings</button></li>
+              </ul>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- <div class="header">
+          <button *ngIf="!open" mat-stroked-button color="accent" (click)="open = !open"><mat-icon>{{ open ? 'remove' : 'sort' }}</mat-icon></button>
+        </div> -->
+        <app-spinner [diameter]="70" [spinnerOnly]="!isErr" *ngIf="isLoading" class="app-spinner"></app-spinner>
+        <div class="content" *ngIf="!isLoading">
+          <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <mat-icon>remove</mat-icon> -->

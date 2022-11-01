@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <a [routerLink]="['to-pack']" [class]="currentUrl === '/merchant/customer-orders/to-pack' ? 'active-a' : ''">To pack</a>
+    <a [routerLink]="['to-deliver']" [class]="currentUrl === '/merchant/customer-orders/to-deliver' ? 'active-a' : ''">To Deliver</a>
+    <a [routerLink]="['delivered']" [class]="currentUrl === '/merchant/customer-orders/delivered' ? 'active-a' : ''">Delivered</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

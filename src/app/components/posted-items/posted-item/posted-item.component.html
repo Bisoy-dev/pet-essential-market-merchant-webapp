@@ -1,0 +1,19 @@
+<mat-card>
+  <div class="content">
+
+    <div class="details">
+      <img [src]="basicProduct.product.images[0]" width="270px" height="250px" alt="">
+      <mat-card-content>
+        <mat-card-title>{{ basicProduct.product.title }}</mat-card-title>
+        <mat-card-subtitle><mat-icon>{{ basicProduct.product.availability ? 'visibility' : 'visibility_off' }}</mat-icon></mat-card-subtitle>
+        <mat-card-title class="title">{{ basicProduct.product.price | currency : 'PHP' }}</mat-card-title>
+      </mat-card-content>
+    </div>
+    <div class="actions" *ngIf="!basicProduct.isUpdate">
+      <button mat-fab color="accent"><mat-icon>delete</mat-icon></button>
+      <button mat-fab color="warn" (click)="onUpdate()"><mat-icon>{{ basicProduct.product.availability ? 'visibility_off' : 'visibility' }}</mat-icon></button>
+    </div>
+    <app-spinner [diameter]="40" *ngIf="basicProduct.isUpdate" [spinnerOnly]="true"></app-spinner>
+  </div>
+</mat-card>
+<!-- <mat-icon>visibility</mat-icon> -->

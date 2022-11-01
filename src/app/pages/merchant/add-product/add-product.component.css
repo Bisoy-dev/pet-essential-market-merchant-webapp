@@ -1,0 +1,32 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90vh;
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
+}
+#fileInput{
+  display: none;
+}
+.col{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: flex-start;
+}
+.uploaded-img{
+  margin: 2vh;
+}
+button{
+  margin-top: 5vh;
+}
+/* .container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vh;
+} */

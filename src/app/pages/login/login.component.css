@@ -1,0 +1,15 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50vh;
+}
+.content{
+  display: flex;
+  justify-content: center;
+  padding: 10vh;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+}

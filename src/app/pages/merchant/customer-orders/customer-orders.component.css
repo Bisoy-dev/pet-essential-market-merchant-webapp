@@ -1,0 +1,13 @@
+a{
+  text-decoration: none;
+  margin-right: 2vh;
+  padding: 2vh;
+  color: black;
+  text-transform: uppercase;
+}
+a:hover{
+  color: rgb(226, 67, 67);
+}
+.active-a{
+  color: rgb(226, 67, 67);;
+}

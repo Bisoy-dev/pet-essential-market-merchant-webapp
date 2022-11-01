@@ -1,0 +1,48 @@
+mat-grid-list{
+  padding-top: 10vh;
+  padding-left: 15vh;
+  padding-right: 15vh;
+  padding-bottom: 12vh;
+}
+mat-expansion-panel{
+  margin-bottom: 2vh;
+}
+mat-card-title{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+mat-card-title mat-icon{
+  margin-right: 0.5rem;
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-bottom: 5vh;
+}
+.map{
+  padding: 2vh;
+  border-radius: 8px;
+  border: 1px solid gray;
+  width: 750px;
+  margin-bottom: 1.5rem;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  padding: 5vh;
+}
+.map mat-hint{
+  margin-top: 3vh;
+}
+.control{
+  width:750px;
+}

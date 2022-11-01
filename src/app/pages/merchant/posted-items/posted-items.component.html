@@ -1,0 +1,29 @@
+<div class="container">
+  <app-spinner [diameter]="70" *ngIf="isLoading && showSpinner" ></app-spinner>
+  <div *ngIf="!isLoading">
+    <div class="header">
+      <div class="item-header">
+        <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onSelected(true, true)">
+            <mat-icon>dialpad</mat-icon>
+            <span>All</span>
+          </button>
+          <button mat-menu-item (click)="onSelected(false, false)">
+            <mat-icon>visibility_off</mat-icon>
+            <span>Not Available</span>
+          </button>
+          <button mat-menu-item (click)="onSelected(true, false)">
+            <mat-icon>visibility</mat-icon>
+            <span>Available</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <app-posted-item *ngFor="let product of basicProducts" [basicProduct]="product" (updateAvailabilty)="onUpdate($event)"></app-posted-item>
+    <mat-card-title *ngIf="!basicProducts.length">No data found!</mat-card-title>
+  </div>
+</div>
+
+
+

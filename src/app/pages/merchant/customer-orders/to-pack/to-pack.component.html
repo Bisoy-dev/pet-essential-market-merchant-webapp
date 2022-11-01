@@ -1,0 +1,14 @@
+
+<app-spinner
+    [diameter]="70"
+    *ngIf="_isDataLoad || checkouts.length === 0"
+    [spinnerOnly]="_isDataLoad"
+    [spinnerShow]="_isDataLoad"
+    [message]="message"
+    (onClick)="loadCheckouts()">
+
+</app-spinner>
+<mat-grid-list cols="1" rowHeight="130" *ngIf="!_isDataLoad && checkouts.length">
+  <app-pack-order *ngFor="let item of data" [data]="item" (toDeliverEvent)="onDeliver($event)"></app-pack-order>
+</mat-grid-list>
+<!-- <h1>{{ (_checkoutService.dataLoadListener() | async) ? 'Truess' : 'Falsee' }}</h1> -->

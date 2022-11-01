@@ -1,0 +1,14 @@
+<app-spinner
+  [diameter]="70"
+  [message]="_message"
+  [spinnerShow]="_isLoading"
+  [spinnerOnly]="_isLoading"
+  *ngIf="_isLoading || checkouts.length == 0"
+  (onClick)="loadDelivered()">
+
+</app-spinner>
+
+<mat-grid-list cols="1" rowHeight="130" *ngIf="!_isLoading && checkouts.length > 0">
+  <app-delivered-order *ngFor="let checkout of checkouts"></app-delivered-order>
+</mat-grid-list>
+

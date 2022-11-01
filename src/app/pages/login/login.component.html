@@ -1,0 +1,24 @@
+<div class="content">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form">
+      <mat-card-title style="margin-bottom: 3vh; text-align:center;">
+        Sign in
+      </mat-card-title>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+      </mat-form-field>
+      <mat-error *ngIf="error" style="text-align: center; margin-bottom: 1rem;">
+        {{ error }}
+      </mat-error>
+      <button mat-raised-button color="accent" type="submit" class="btn" [disabled]="submit">
+        <mat-progress-spinner mode="indeterminate" diameter="33" *ngIf="submit" color="warn"></mat-progress-spinner>
+        <span *ngIf="!submit">Login</span>
+      </button>
+    </div>
+  </form>
+</div>
