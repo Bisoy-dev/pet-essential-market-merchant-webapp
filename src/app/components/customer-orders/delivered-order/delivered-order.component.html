@@ -6,7 +6,7 @@
   <mat-divider></mat-divider>
   <mat-card-content style="margin-top: 8vh;">
     <div class="content">
-      <img [src]="checkout?.content?.items[0]?.images[0]" alt="">
+      <img [src]="checkout?.content?.items[0]?.images[0]" width="430px" height="300px" alt="">
       <div class="details">
         <span class="title">{{ checkout?.content?.items[0]?.title }}</span>
         <div class="sub-details">
@@ -40,7 +40,7 @@
         DELIVERED ON
       </mat-card-subtitle>
       <mat-card-title>
-        Tue, Sep 20, 2022 11:42 AM
+        {{ checkout?.date?.updatedAt | date : 'fullDate' }}
       </mat-card-title>
     </mat-card-content>
   </mat-card-content>

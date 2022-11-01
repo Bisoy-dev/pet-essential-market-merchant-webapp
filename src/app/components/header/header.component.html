@@ -3,9 +3,9 @@
   <button *ngIf="showBurger" mat-icon-button (click)="onToggle()" class="humberger"><mat-icon>{{ show ? 'close' : 'menu' }}</mat-icon></button>
   <a href="#">Pet Shop e-Commerce</a>
   <span class="spacer"></span>
-  <button mat-mini-fab color="accent" [matMenuTriggerFor]="menu" *ngIf="profileSectionShow"><mat-icon>person</mat-icon></button>
+  <button mat-mini-fab color="accent" [matMenuTriggerFor]="menu" *ngIf="profileSectionShow || _url === '/admin/monetization'"><mat-icon>person</mat-icon></button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="['/merchant', 'settings']">
+    <button mat-menu-item [routerLink]="['/merchant', 'settings']" *ngIf="_url !== '/admin/monetization'">
       <mat-icon>settings</mat-icon>
       <span>Settings</span>
     </button>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { user_local_storage_key } from 'src/app/constants/keys';
 import { UiService } from 'src/app/helper/ui.service';
 
@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
   show : boolean = false;
   showBurger : boolean = false
   profileSectionShow : boolean = false;
+
+  _url : string = ''
   constructor(private _uiService : UiService, private _route : Router) {
     _uiService.burgerShowListener()
       .subscribe(val => {
@@ -22,6 +24,12 @@ export class HeaderComponent implements OnInit {
       .subscribe(val => {
         this.profileSectionShow = val.show
       })
+    _route.events.subscribe(event => {
+      if(event instanceof NavigationStart){
+        const route = <NavigationStart>event;
+        this._url = route.url;
+      }
+    })
     this.showBurger = this.isLogged();
     this.profileSectionShow = this.isLogged();
   }

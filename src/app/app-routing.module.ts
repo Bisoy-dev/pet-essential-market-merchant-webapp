@@ -31,6 +31,9 @@ const routes: Routes = [
     path : 'merchant/customer-orders', redirectTo : '/merchant/customer-orders/to-pack', pathMatch : 'full'
   },
   {
+    path : '', redirectTo : '/login', pathMatch : 'full'
+  },
+  {
     path : 'admin', component : AdminComponent, children : [
       {
         path : 'monetization', component : MonetizationComponent
